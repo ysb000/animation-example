@@ -35,6 +35,12 @@ header nav > ul > li {padding:0 10px; position:relative;}
 header nav > ul > li > a {}
 header nav > ul > li > .sub {
     position:absolute; 
+    opacity:0;
+    transition:transform 1s ease;
+}
+header nav > ul > li:hover > .sub {
+    opacity:1;
+    transform: translateY(10px);
 }
 header nav > ul > li > .sub li {width:100px; padding: 10px 0 0;}
 header nav > ul > li > .sub li a {}
