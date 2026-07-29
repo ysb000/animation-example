@@ -33,14 +33,18 @@ header nav > ul {
 }
 header nav > ul > li {padding:0 10px; position:relative;}
 header nav > ul > li > a {}
+/* v1 메뉴에 올렸을 때 서브보이고 숨기기(애니x) - display:none; :block; - 수치가 아니라 애니메이션 적용 불가 */
 header nav > ul > li > .sub {
-    position:absolute; 
-    opacity:0;
-    transition:transform 1s ease;
+    position:absolute;
+    /* height:0; overflow:hidden; */ /* 높이 설정시 투명도 애니메이션 적용x */
+    transform:translateY(-60px);
+    opacity:0; /* 존재하는데 투명도만 준 것이라 선택 가능 영역으로 인식됨-세로크기 조정 또는 높이 지정으로 해결 */
+    transition:transform 1s, opacity 0.6s;
 }
 header nav > ul > li:hover > .sub {
-    opacity:1;
-    transform: translateY(10px);
+    opacity:1;/* 
+    height:max-content; */
+    transform: translateY(0); /* 기본위치값 0 */
 }
 header nav > ul > li > .sub li {width:100px; padding: 10px 0 0;}
 header nav > ul > li > .sub li a {}
@@ -48,17 +52,27 @@ header nav > ul > li > .sub li a:hover {color:#ddd;}
 /*section*/
 section {}
 section .sec1 {background-image:url(../images/bg_01.jpg)}
-section .sec2 {background-image:url(../images/bg_02.jpg)}
+section .sec2 {
+    /* 백그라운드 사진이 깔려있는 상태에서 새로운 사진을 넣고 싶을 때 */
+    /* 속성은 단 한번만 작성해야하고 레이아웃을 생각하면서 순서 지정 */
+    background-image:
+        url(../images/person.png),
+        url(../images/space.png),
+        url(../images/bg_02.jpg);
+    background-size: auto, cover, cover; /* , 를 기준으로 적용값 작성 */
+    background-repeat: no-repeat, repeat-x, repeat;
+    background-position: 90% center;
+    animation: bgAni 1.5s ease 2s 1 both;
+}
+@keyframes bgAni{
+    0% {background-position: 90% center;}
+    100% {background-position: 10% center;}
+}
 section .sec3 {background-image:url(../images/bg_03.jpg)}
 section > div {
     background-size:cover; background-position:center;
     text-align:center; height:100vh; width:100%; 
     display:flex; flex-flow:column wrap; justify-content:center; color:#fff;
-}
-section > div:nth-child(2) {
-    background-repeat:no-repeat;
-    background-size:cover, cover;
-    background-position:40% center, center;
 }
 section > div h1 {
     font-family: 'Pattaya', sans-serif;

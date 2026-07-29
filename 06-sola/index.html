@@ -15,7 +15,7 @@
         .h_bg {background:#fff; position:fixed; left:0; top:0; width:100%; z-index:999;}
         .h_bg header {width:1200px; margin:0 auto;}
         .h_bg header img {width:100%;}
-        .slide_wrap {}
+        .slide_wrap {max-width:1920px;}
         .slide_wrap .slide_c {position:relative;}
         .slide_wrap .slide_c .slide {
             position:absolute; left:0; top:0;
@@ -23,18 +23,34 @@
             background-position:center;
             opacity:0; transition:opacity 0.5s;
         }
-        .slide_wrap .slide_c .slide1 {background-image:url(images/bg1.jpg); opacity:1}
-        .slide_wrap .slide_c .slide2 {background-image:url(images/bg2.jpg);}
+        .slide_wrap .slide_c .slide1 {
+            background-image:url(images/bg1.jpg); opacity:1;
+            background-size:auto 120%;/* 기본값 설정 권장: 창의 크기를 키웠을때 문제 발생 -> 가로 사이즈 up 부모에 max-width로 크기 지정  */
+            animation:bgAni 3s infinite alternate;
+        }
+        .slide_wrap .slide_c .slide2 {background-image:url(images/bg2.jpg); }
         .slide_wrap .slide_c .slide3 {background-image:url(images/bg3.jpg);}
         .slide_wrap .slide_c .slide p {
             text-align:center; color:#fff;
-            font-size:3rem; letter-spacing:-1px;
-            position:relative; top:400px;
+            letter-spacing:-1px;
+            position:relative; 
+            font-size:3rem; top:400px; opacity:0; /* 기본값 */
+            animation: txtAni 3s infinite alternate;
         }
         /* class */
 
         /* animation */
-
+        /* transform을 사용한 상대값 작성 방법 또는 기존에 적혀있는 기본값을 활요한 방법 2가지 모두 가능 */
+        @keyframes txtAni {
+            0% {font-size:3rem; top:400px; opacity:0;}
+            100% {font-size:3.2rem; top:380px; opacity:1;}
+        }
+        @keyframes bgAni {
+            /* 0% {transform:scale(100%)}
+            100% {transform:scale(120%);} */
+            0% {background-size:auto 120%;}
+            100% {background-size:auto 140%;}
+        }
     </style>
     <script>
         window.onload=function(){
