@@ -8,10 +8,10 @@
     <link rel="stylesheet" href="reset.css">
     <style>
         #wrap {
-        width:100%; max-height:1024px;
+        width:100%; /* height:100vh; */
             background:url(images/bmw_bg.jpg);
-            background-size:100%;
-            background-position: center;
+            background-size:cover;
+            background-position: center 70%;
             position:relative; 
         }
         header {
@@ -23,16 +23,22 @@
             border-bottom:1px solid rgba(255,255,255,0.2);
             width:80%; margin:0 auto; display:flex; justify-content:space-around;
         }
-        header nav a {padding:10px 0; position:relative; color:#fff;}
+        header nav a {padding:10px 0; position:relative; color:#fff;} 
+        /*  a에 border 사용하는 이유 border는 단순 시각적인 밑줄 디자인일 뿐, 애니메이션&개별크기 동작불가 */
         header nav a::after {
             content:''; display:block;
-            width:0%; height:1px; background:#cae4ff;
-            position:absolute; bottom:-1px; 
-            transition: width 1s;
+            width:100%; height:1px; background:#cae4ff;
+            position:absolute; bottom:-1px;
+            /* 중심축 특징으로 애니메이션 적용할 때 항상 transform 속성 사용하기 */ 
+            /* 크기(scale), 이동(translate), 회전(rotate), 기울기(skew) */
+            transform:scaleX(0); /* 중심기준으로 X축 크기 0 설정(처음 숨기기) */
+            transition:transform 0.6s;
         }
         header nav a:hover::after {
-            width:100%;
-            transform:translate(-50%,-50%);
+            transform: scaleX(1); 
+            /* transform은 변형 속성일 쁀 애니메이션 속성이 아님 */
+            /* 사용자 이벤트와 함께 변경되는 css 속성 애니메아션은 transition */
+            /* 이벤트와 관계없이 자동 실행되는 css 속성 애니메이션은 keyframes, animation */
         }
         main {position:relative; width:1400px; height:80vh; margin:0 auto;}
         main img {
