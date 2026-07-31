@@ -8,11 +8,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
     <style>
         body, html {background:#222;}
-        main {width:100%; height:100vh; display:flex; flex-flow:column nowrap; justify-content: center; align-items: center;}
+        main {width:100%; height:200vh; display:flex; flex-flow:column nowrap; justify-content: center; align-items: center;}
         main h1 {
             margin:0 auto; font-weight:700; 
             font-size:5rem; text-align: center;
             background: linear-gradient(to right, #ff00ff, #00ffff, #ff00ff);
+            /* edge, ff , chrome, opera, safari 등  */
+            /* -webkit-이란 각각의 브라우저를 사용하는 사용자가 최신 css를 안정적으로 볼 수 있도록 지원하는 브라우저엔진도구 */
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -23,6 +25,25 @@
             text-shadow:0 0 20px rgba(255,255,255,0.2);
             font-size:10rem; text-align: center; font-weight:700; 
             background: url(https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D) center / cover;
+            /* ' background:이미지 위치 / 크기;' -> ' / '는 background 통합속성으로 크기를 작성할 때 필요  */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
+        main h3 {
+            font-family: 'Black Ops One'; 
+            font-size: 10rem; font-weight:700; text-align:center ;
+            background: url(https://images.unsplash.com/photo-1464802686167-b939a6910659?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTI4fHxiYWNrZ3JvdW5kfGVufDB8fDB8fHww) center / cover;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+            animation:bgUp 1s infinite alternate;
+        }
+        main h4 {
+            font-size:5rem; font-weight:700; text-align:center ;
+            background: linear-gradient(90deg, #3903ff, #705db6, #2e70d3, #705db6, #3903ff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -34,9 +55,13 @@
         footer {position:fixed; bottom:50px; right:50px;}
         footer img {width:24px;}
         footer img:nth-child(1) {margin-right:10px;}
-        @keyframes bg-gradient {
-            0% {}
-            100% {}
+        @keyframes bggra {
+            0% {opacity: 0;}
+            100% {opacity: 1;}
+        }
+        @keyframes bgUp {
+            0% {transform: translateY(10px);}
+            100% {transform: translateY(0);}
         }
     </style>
 </head>
@@ -45,6 +70,8 @@
         <p><img src="./images/arrow.png" alt=""></p>
         <h1>PORTFOLIO</h1>
         <h2>PROJECT</h2>
+        <h3>PROFILE</h3>
+        <h4>WORKS</h4>
         <p><img src="./images/arrow.png" alt=""></p>
     </main>
     <footer>

@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="reset.css">
     <style>
         body {background:#000;}
-        body * {border:1px solid aqua;}
         header {
             padding:20px 0; width:1400px; margin:0 auto;
             display:flex; justify-content:space-between; align-items:center;
@@ -31,18 +30,19 @@
         }
         main .video_bg video {
             position:absolute;
-            left:-100px; top:-200px; z-index:10;
+            left:-100px; top:-200px; z-index:10; 
         }
         main .video_bg img {
             position:absolute; 
             left:0; top:0; z-index:20;
             width:100%;
         }
-        main .txt_bg_ani {
-            background:url(images/bg_flow.png) repeat-x left top;
-            height:150px; width:100%;
-            position:absolute; z-index:30;
-            animation: flow 2s linear infinite ;
+        main .video_bg .txt_bg_ani {
+            background:url(images/bg_flow.png) repeat-x left center;
+            /* 이미지 연결, 반복여부, x축, y축  */
+            height:640px; width:100%;
+            position:absolute; z-index:16; 
+            animation: flow 30s linear infinite ;
         }
         /* 애니메이션 */
         @keyframes flow {
@@ -59,10 +59,11 @@
     <main>
         <div class="center">
             <div class="video_bg">
+                <!-- 두개의 요소를 겹치고 싶다면 요소의 관계가 형제 관계일 것-->
                 <video src="video/golden.mp4" autoplay muted loop></video>
                 <img src="images/img_intro.png" alt="">
+                <div class="txt_bg_ani"></div>
             </div>
-            <div class="txt_bg_ani"></div>
         </div>
     </main>
 </body>
